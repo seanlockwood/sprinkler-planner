@@ -1,2 +1,2 @@
 # sprinkler-planner
-Plan an outdoor lawn sprinkler lyout for backyard and frontyards
+Plan an outdoor lawn sprinkler layout for backyards and frontyards
