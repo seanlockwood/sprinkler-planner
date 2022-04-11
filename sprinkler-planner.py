@@ -1,23 +1,24 @@
 # Program to help design outdoor sprinkler coverage
 
 import tkinter as tk
-import Pillow
-from tkinter.filedialog import askopenfilename, asksaveasfilename
+from PIL import Image, ImageTk
+from tkinter import filedialog
 
 
 #Open a file
 def open_file():
     global image_container
-    filepath = askopenfilename(title="Open a file", filetypes=[("JPG Files", "*.jpg"), ("All Files", "*.*")])
+    filepath = filedialog.askopenfilename(title="Open a file", filetypes=[("JPG Files", "*.jpg"), ("All Files", "*.*")])
     if not filepath:
         return
-    new_image = PhotoImage(file=filepath)
-    canvas_widget.create_image(100, 80, image=new_image)
+    global load
+    load = ImageTk.PhotoImage(Image.open(filepath))
+    canvas_widget.create_image(100, 80, anchor="nw", image=load)
     root.title(f"Simple Editor - {filepath}")
 
 #Save the current file as a new file
 def save_file():
-    filepath = asksaveasfilename(defaultextension=".jpg", filetypes=[("JPG Files", "*.jpg"), ("All Files", "*.*")])
+    filepath = filedialog.asksaveasfilename(defaultextension=".jpg", filetypes=[("JPG Files", "*.jpg"), ("All Files", "*.*")])
     if not filepath:
         return
     return
