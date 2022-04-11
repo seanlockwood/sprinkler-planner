@@ -1,7 +1,7 @@
 # Program to help design outdoor sprinkler coverage
 
 import tkinter as tk
-from PIL import Image, ImageTk
+from PIL import Image, ImageTk, ImageGrab
 from tkinter import filedialog
 
 
@@ -11,7 +11,7 @@ def open_file():
     filepath = filedialog.askopenfilename(title="Open a file", filetypes=[("JPG Files", "*.jpg"), ("All Files", "*.*")])
     if not filepath:
         return
-    global load
+    global load #Prevent Python garbage collector from deleting the variable before it's shown in the window
     load = ImageTk.PhotoImage(Image.open(filepath))
     canvas_widget.create_image(100, 80, anchor="nw", image=load)
     root.title(f"Simple Editor - {filepath}")
@@ -21,8 +21,20 @@ def save_file():
     filepath = filedialog.asksaveasfilename(defaultextension=".jpg", filetypes=[("JPG Files", "*.jpg"), ("All Files", "*.*")])
     if not filepath:
         return
+    save_widget_as_image(canvas_widget, filepath)
     return
 
+def save_widget_as_image(widget, filename):
+    ImageGrab.grab(bbox=(
+        widget.winfo_rootx(),
+        widget.winfo_rooty(),
+        widget.winfo_rootx() + widget.winfo_width(),
+        widget.winfo_rooty() + widget.winfo_height()
+    )).save(filename)
+
+#Clear the canvas and start fresh
+def clear_canvas():
+    canvas_widget.delete("all")
 
 root = tk.Tk()
 root.title("Sprinkler Test")
@@ -33,8 +45,8 @@ root.columnconfigure(1, minsize=800, weight=1)
 
 #Create the widgets
 frame_buttons = tk.Frame(root, relief=tk.RAISED, bd=2)
-button_clear = tk.Button(frame_buttons, text="Clear")
-button_save = tk.Button(frame_buttons, text="Save As...")
+button_clear = tk.Button(frame_buttons, text="Clear", command=clear_canvas)
+button_save = tk.Button(frame_buttons, text="Save As...", command=save_file)
 button_open = tk.Button(frame_buttons, text="Open", command=open_file)
 canvas_widget = tk.Canvas(root, cursor="dot")
 
