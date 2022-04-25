@@ -67,19 +67,36 @@ canvas_widget.create_line(825,125,825,525, fill="green", width=5)
 canvas_widget.create_line(625,375,625,525, fill="green", width=5)
 canvas_widget.create_line(625,525,825,525, fill="green", width=5)
 
+#Customize Radius size and layout x,y coordinates of the sprinklers
+sprinkler_radius            =250
+sprinkler_one_point_x, sprinkler_one_point_y           =125,125
+sprinkler_two_point_x, sprinkler_two_point_y           =125,250
+sprinkler_three_point_x, sprinkler_three_point_y       =125,375
+sprinkler_four_point_x, sprinkler_four_point_y         =375,375
+sprinkler_five_point_x, sprinkler_five_point_y         =625,375
+sprinkler_six_point_x, sprinkler_six_point_y           =625,525
+sprinkler_seven_point_x, sprinkler_seven_point_y       =825,525
+sprinkler_eight_point_x, sprinkler_eight_point_y       =825,392
+sprinkler_nine_point_x, sprinkler_nine_point_y         =825,259
+sprinkler_ten_point_x, sprinkler_ten_point_y           =825,125
+sprinkler_eleven_point_x, sprinkler_eleven_point_y     =592,125
+sprinkler_twelve_point_x, sprinkler_twelve_point_y     =359,125
+
 #Sprinkler coord since an ARC is the center of a rectangle with coordinates x0, y0, x1, y1 where x0 & y0 is the top left corner
-sprinkler_one_coordinates   =0,0,250,250
-sprinkler_two_coordinates   =0,125,250,375
-sprinkler_three_coordinates =0,250,250,500
-sprinkler_four_coordinates  =250,250,500,500
-sprinkler_five_coordinates  =500,250,750,500
-sprinkler_six_coordinates   =500,400,750,650
-sprinkler_seven_coordinates =0
-sprinkler_eight_coordinates =0
-sprinkler_nine_coordinates  =0
-sprinkler_ten_coordinates   =0
-sprinkler_eleven_coordinates=0
-sprinkler_twelve_coordinates=0
+sprinkler_one_coordinates   = sprinkler_one_point_x - sprinkler_radius, sprinkler_one_point_y - sprinkler_radius, sprinkler_one_point_x + sprinkler_radius, sprinkler_one_point_y + sprinkler_radius
+sprinkler_two_coordinates   = sprinkler_two_point_x - sprinkler_radius, sprinkler_two_point_y - sprinkler_radius, sprinkler_two_point_x + sprinkler_radius, sprinkler_two_point_y + sprinkler_radius
+sprinkler_three_coordinates = sprinkler_three_point_x - sprinkler_radius, sprinkler_three_point_y - sprinkler_radius, sprinkler_three_point_x + sprinkler_radius, sprinkler_three_point_y + sprinkler_radius
+sprinkler_four_coordinates  = sprinkler_four_point_x - sprinkler_radius, sprinkler_four_point_y - sprinkler_radius, sprinkler_four_point_x + sprinkler_radius, sprinkler_four_point_y + sprinkler_radius
+sprinkler_five_coordinates  = sprinkler_five_point_x - sprinkler_radius, sprinkler_five_point_y - sprinkler_radius, sprinkler_five_point_x + sprinkler_radius, sprinkler_five_point_y + sprinkler_radius
+sprinkler_six_coordinates   = sprinkler_six_point_x - sprinkler_radius, sprinkler_six_point_y - sprinkler_radius, sprinkler_six_point_x + sprinkler_radius, sprinkler_six_point_y + sprinkler_radius
+sprinkler_seven_coordinates = sprinkler_seven_point_x - sprinkler_radius, sprinkler_seven_point_y - sprinkler_radius, sprinkler_seven_point_x + sprinkler_radius, sprinkler_seven_point_y + sprinkler_radius
+sprinkler_eight_coordinates = sprinkler_eight_point_x - sprinkler_radius, sprinkler_eight_point_y - sprinkler_radius, sprinkler_eight_point_x + sprinkler_radius, sprinkler_eight_point_y + sprinkler_radius
+sprinkler_nine_coordinates  = sprinkler_nine_point_x - sprinkler_radius, sprinkler_nine_point_y - sprinkler_radius, sprinkler_nine_point_x + sprinkler_radius, sprinkler_nine_point_y + sprinkler_radius
+sprinkler_ten_coordinates   = sprinkler_ten_point_x - sprinkler_radius, sprinkler_ten_point_y - sprinkler_radius, sprinkler_ten_point_x + sprinkler_radius, sprinkler_ten_point_y + sprinkler_radius
+sprinkler_eleven_coordinates= sprinkler_eleven_point_x - sprinkler_radius, sprinkler_eleven_point_y - sprinkler_radius, sprinkler_eleven_point_x + sprinkler_radius, sprinkler_eleven_point_y + sprinkler_radius
+sprinkler_twelve_coordinates= sprinkler_twelve_point_x - sprinkler_radius, sprinkler_twelve_point_y - sprinkler_radius, sprinkler_twelve_point_x + sprinkler_radius, sprinkler_twelve_point_y + sprinkler_radius
+
+
 
 #Create the arcs
 sprinkler_one_arc    = canvas_widget.create_arc(sprinkler_one_coordinates, start=270, extent=90, fill="cyan")
@@ -88,8 +105,13 @@ sprinkler_three_arc  = canvas_widget.create_arc(sprinkler_three_coordinates, sta
 sprinkler_four_arc   = canvas_widget.create_arc(sprinkler_four_coordinates, start=0, extent=180, fill="cyan")
 sprinkler_five_arc   = canvas_widget.create_arc(sprinkler_five_coordinates, start=270, extent=270, fill="cyan")
 sprinkler_six_arc    = canvas_widget.create_arc(sprinkler_six_coordinates, start=0, extent=90, fill="cyan")
+sprinkler_seven_arc    = canvas_widget.create_arc(sprinkler_seven_coordinates, start=90, extent=90, fill="cyan")
+sprinkler_eight_arc    = canvas_widget.create_arc(sprinkler_eight_coordinates, start=90, extent=180, fill="cyan")
+sprinkler_nine_arc    = canvas_widget.create_arc(sprinkler_nine_coordinates, start=90, extent=180, fill="cyan")
+sprinkler_ten_arc    = canvas_widget.create_arc(sprinkler_ten_coordinates, start=180, extent=90, fill="cyan")
+sprinkler_eleven_arc    = canvas_widget.create_arc(sprinkler_eleven_coordinates, start=180, extent=180, fill="cyan")
+sprinkler_twelve_arc    = canvas_widget.create_arc(sprinkler_twelve_coordinates, start=180, extent=180, fill="cyan")
 
-sprinkler_twelve_arc = canvas_widget.create_arc(sprinkler_twelve_coordinates, start=180, extent=180, fill="cyan")
 
 root.mainloop()
 
